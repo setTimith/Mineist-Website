@@ -51,20 +51,6 @@ btnScrollTo.addEventListener("click", function (e) {
 
 // Page Navigation
 
-// document.querySelectorAll('.nav__link').forEach(function (el) {
-//   el.addEventListener('click', function (e) {
-//     e.preventDefault();
-
-//     const id = this.getAttribute('href');
-//     console.log(id);
-//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-//   });
-// });
-
-// event delegation
-//1. Add event listner to common parent element
-//2. Determine what element originated that event
-
 document.querySelector(".nav__links").addEventListener("click", function (e) {
   e.preventDefault();
   // Matching strategy
