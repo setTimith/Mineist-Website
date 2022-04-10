@@ -45,6 +45,10 @@ html {
   @include respond(small-phone) {
     font-size: 37%;
   }
+
+  @include respond(small-screen) {
+    font-size: 20%;
+  }
 }
 
 body {

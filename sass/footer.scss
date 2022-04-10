@@ -15,6 +15,11 @@
 
 .footer__item {
   margin-right: 4rem;
+
+  @include respond(small-phone) {
+    margin-right: 2rem;
+    text-align: center;
+  }
 }
 
 .footer__link {

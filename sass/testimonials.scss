@@ -4,6 +4,10 @@
 .testimonial {
   width: 65%;
   position: relative;
+
+  @include respond(small-phone) {
+    width: 75%;
+  }
 }
 
 .testimonial::before {

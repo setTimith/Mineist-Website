@@ -8,6 +8,8 @@
   margin: 0 12rem;
 
   @include respond(small-phone) {
+    display: flex;
+    flex-direction: column;
     margin: 0 6rem;
   }
 }
@@ -25,6 +27,11 @@
   justify-self: center;
   width: 70%;
   font-size: 1.5rem;
+
+  @include respond(small-phone) {
+    text-align: justify;
+    width: 90%;
+  }
 }
 
 .features__icon {
@@ -38,8 +45,8 @@
   margin-bottom: 2rem;
 
   @include respond(small-phone) {
-    height: 4rem;
-    width: 4rem;
+    height: 3rem;
+    width: 3rem;
   }
 }
 
@@ -52,4 +59,16 @@
 .features__header {
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+
+.order3 {
+  @include respond(small-phone) {
+    order: 2;
+  }
+}
+
+.order4 {
+  @include respond(small-phone) {
+    order: 4;
+  }
 }

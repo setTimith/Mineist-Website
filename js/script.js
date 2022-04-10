@@ -13,6 +13,36 @@ const nav = document.querySelector(".nav");
 const tabs = document.querySelectorAll(".operations__tab");
 const tabsContainer = document.querySelector(".operations__tab-container");
 const tabsContent = document.querySelectorAll(".operations__content");
+
+const navButton = document.querySelector(".nav_hidden");
+const HiddenBack = document.querySelector(".navigation__background");
+const hiddenClose = document.querySelector(".close");
+const linksHidden = document.querySelector(".linksHidden");
+
+//// hidden nav
+
+navButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  HiddenBack.style.opacity = 100;
+  HiddenBack.style.transform = "scale(80)";
+  hiddenClose.classList.remove("none");
+  linksHidden.classList.remove("none");
+});
+
+hiddenClose.addEventListener("click", function (e) {
+  e.preventDefault();
+  HiddenBack.style.transform = "scale(0)";
+  hiddenClose.classList.add("none");
+  linksHidden.classList.add("none");
+});
+
+HiddenBack.addEventListener("click", function () {
+  // HiddenBack.style.opacity = 0;
+  HiddenBack.style.transform = "scale(0)";
+  hiddenClose.classList.add("none");
+  linksHidden.classList.add("none");
+});
+
 ///////////////////////////////////////
 // Modal window
 
@@ -56,8 +86,22 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
   // Matching strategy
   if (e.target.classList.contains("nav__link")) {
     const id = e.target.getAttribute("href");
-    console.log(id);
+
     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+document.querySelector(".linksHidden").addEventListener("click", function (e) {
+  e.preventDefault();
+  // Matching strategy
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+
+    hiddenClose.classList.add("none");
+    linksHidden.classList.add("none");
+    HiddenBack.style.transform = "scale(0)";
   }
 });
 
@@ -99,40 +143,9 @@ const handleHover = function (e) {
   }
 };
 
-// Passing " argument" into handler
 nav.addEventListener("mouseover", handleHover.bind(0.5));
 
 nav.addEventListener("mouseout", handleHover.bind(1));
-
-// // sticky nav
-// const initialCoords = section1.getBoundingClientRect();
-
-// very bad for performance
-// window.addEventListener('scroll', function (e) {
-//   if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
-//   else nav.classList.remove('sticky');
-// });
-
-// a better way
-// Sticky naviation :intersection observer api
-
-// // observer options
-// const observerCallback = function (entries, observer) {
-//   entries.forEach(entry => {
-//     console.log(entry);
-//   });
-// };
-
-// const obsOptions = {
-//   root: null, // what does it intersect
-//   threshold: [0, 0.2], // percentage of intersction where the observer callback will be called
-// };
-
-// // how it works
-// const observer = new IntersectionObserver(observerCallback, obsOptions);
-// observer.observe(section1);
-
-// applying it to our navigation
 
 const header = document.querySelector(".header");
 const navHeight = nav.getBoundingClientRect().height; // we get the height of the nav no matter what which makes it responsive
@@ -149,7 +162,7 @@ const headerObserver = new IntersectionObserver(stickyNav, {
   rootMargin: `-${navHeight}px`, // in order for our nav to appear before
 });
 
-headerObserver.observe(header);
+if (window.innerWidth > 768) headerObserver.observe(header);
 
 // Reveal elements on scroll
 
