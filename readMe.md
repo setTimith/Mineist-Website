@@ -1,9 +1,3 @@
-<img src='./img/card.jpg'>
-
-
-
-
-
 
 # Mineist
 
